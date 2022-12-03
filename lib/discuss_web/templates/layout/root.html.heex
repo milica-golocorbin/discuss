@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="csrf-token" content={csrf_token_value()}>
+    <%= live_title_tag assigns[:page_title] || "Discuss", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/vendor/fonts/inter/inter.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/app.js")}></script>
+  </head>
+  <body class="flex flex-col min-h-screen w-screen items-center justify-between overflow-x-hidden">
+    <header class="bg-slate-800 text-white font-semibold text-sm w-full h-full py-6 tracking-wide">
+      <section class="w-4/5 max-w-screen-2xl mx-auto h-full flex items-center justify-between">
+        <div class="flex items-center justify-center gap-2">
+          <!--<img src={Routes.static_path(@conn, "/images/logo.png")} alt="Tasks Sharing Logo" class="w-12 h-auto"/>-->
+          <%= link "DISCUSS", to: Routes.page_path(@conn, :index), class: "uppercase tracking-widest font-bold" %>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </section>
+    </header>
+    <%= @inner_content %>
+    <footer class="bg-gradient-to-bl from-slate-900 to-slate-700 text-white font-semibold text-xs text-center w-full h-full py-6 tracking-wide">
+      <section class="w-4/5 max-w-screen-2xl mx-auto h-full">
+        <div class="flex flex-col items-center justify-center gap-6">
+          <p>Application done for educational purposes only!</p>
+         <!--  TODO: ADD LINK TO THE PORTFOLIO AND TO LINKEDIN PROFILE -->
+          <p>Created by: <span class="text-yellow-500 uppercase tracking-widest text-sm">Milica Goločorbin</span></p>
+          <!-- SOCIAL LINKS -->
+            <div class="flex items-center justify-center gap-6">
+              <a target="_blank" aria-label="milica golocorbin github link" href="https://github.com/milica-golocorbin" rel="noopener noreferrer">
+                <span><%= FontAwesome.icon("github", type: "brands", class: "h-6 w-6 rounded bg-white hover:translate-y-0.5") %>
+                </span>
+              </a>
+              <a target="_blank" aria-label="milica golocorbin instagram link" href="https://www.instagram.com/milicagolocorbin" rel="noopener noreferrer">
+                <span><%= FontAwesome.icon("instagram", type: "brands", class: "h-6 w-6 rounded bg-white hover:translate-y-0.5") %>
+                </span>
+              </a>
+              <a target="_blank" aria-label="milica golocorbin instagram link" href="https://twitter.com/micagolocorbin" rel="noopener noreferrer">
+                <span><%= FontAwesome.icon("twitter", type: "brands", class: "h-6 w-6 rounded bg-white hover:translate-y-0.5") %>
+                </span>
+              </a>
+              <a target="_blank" aria-label="milica golocorbin instagram link" href="https://dev.to/milicagolocorbin" rel="noopener noreferrer">
+                <span><%= FontAwesome.icon("dev", type: "brands", class: "h-6 w-6 rounded bg-white hover:translate-y-0.5") %>
+                </span>
+              </a>
+              <a target="_blank" aria-label="milica golocorbin youtube link" href="https://www.youtube.com/channel/UCvUxkka6v725zFX-v2SJmtQ" rel="noopener noreferrer">
+                <span><%= FontAwesome.icon("youtube", type: "brands", class: "h-6 w-6 rounded bg-white hover:translate-y-0.5") %>
+                </span>
+              </a>
+              <a target="_blank" aria-label="milica golocorbin linkedin link" href="#" rel="noopener noreferrer">
+                <span><%= FontAwesome.icon("linkedin", type: "brands", class: "h-6 w-6 rounded bg-white hover:translate-y-0.5") %>
+                </span>
+              </a>
+            </div>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
